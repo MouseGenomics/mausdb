@@ -30,7 +30,7 @@ CREATE TABLE blob_data (
 , blob_upload_datetime                    datetime                    default NULL
 
 -- comment to file
-, blob_comment                            text                        default ''
+, blob_comment                            text                        NULL
 
 -- upload user
 , blob_upload_user                        int                         default NULL
