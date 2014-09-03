@@ -1,0 +1,13 @@
+-- CHANGES TO THE DB SCHEMA
+
+-- -------------------------
+-- 08. Februar 2010, Version 93
+-- table metadata_definitions
+-- add "required" flag to metadata definitions
+ALTER TABLE metadata_definitions
+ADD COLUMN  mdd_required varchar(1) default 'n' after mdd_active_yn;
+
+CREATE INDEX mdd_required ON metadata_definitions (mdd_required);
+
+
+

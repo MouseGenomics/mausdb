@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+
+<head>
+
+<title>Calendar</title>
+
+<link rel="stylesheet" type="text/css" href="http://castor.helmholtz-muenchen.de/mausdb/css/maus.css" />
+
+<script type="text/javascript">//<![CDATA[
+
+function Set_Day (Zeichen) {
+   if (Zeichen < 10) { Zeichen = '0' + Zeichen; }         // add leading '0'
+   window.document.Calendar.Day_Preview.value = Zeichen;
+}
+
+function Set_Month (Zeichen) {
+   if (Zeichen < 10) { Zeichen = '0' + Zeichen; }         // add leading '0'
+   window.document.Calendar.Month_Preview.value = Zeichen;
+}
+
+function Set_Year (Zeichen) {
+   window.document.Calendar.Year_Preview.value = Zeichen;
+}
+
+function Set_Hour (Zeichen) {
+   if (Zeichen < 10) { Zeichen = '0' + Zeichen; }         // add leading '0'
+   window.document.Calendar.Hour_Preview.value = Zeichen;
+}
+
+function Set_Minute (Zeichen) {
+   if (Zeichen < 10) { Zeichen = '0' + Zeichen; }         // add leading '0'
+   window.document.Calendar.Minute_Preview.value = Zeichen;
+}
+
+function Set_Second (Zeichen) {
+   if (Zeichen < 10) { Zeichen = '0' + Zeichen; }         // add leading '0'
+   window.document.Calendar.Second_Preview.value = Zeichen;
+}
+
+function set_defaults () {
+   var d = new Date();
+   var dm = d.getMonth() + 1;
+   if (dm < 10) { dm = '0' + dm; }         // add leading '0'
+   var dj = d.getYear() + 1900;
+   var dd = d.getDate();
+   if (dd < 10) { dd = '0' + dd; }         // add leading '0'
+   var dh = d.getHours();
+   if (dh < 10) { dh = '0' + dh; }         // add leading '0'
+   var dmi = d.getMinutes();
+   if (dmi < 10) { dmi = '0' + dmi; }      // add leading '0'
+   var ds = '00';
+
+
+   window.document.Calendar.Day_Preview.value    = dd;
+   window.document.Calendar.Month_Preview.value  = dm;
+   window.document.Calendar.Year_Preview.value   = dj;
+   window.document.Calendar.Hour_Preview.value   = dh;
+   window.document.Calendar.Minute_Preview.value = dmi;
+   window.document.Calendar.Second_Preview.value = ds;
+}
+
+function Set_Date () {
+   // extract target input field from URL (.../calender.html?Field=target_field)
+   target_field = window.location.search.split("=");
+
+   // collect all values
+   Day    = window.document.Calendar.Day_Preview.value;
+   Month  = window.document.Calendar.Month_Preview.value;
+   Year   = window.document.Calendar.Year_Preview.value;
+   Hour   = window.document.Calendar.Hour_Preview.value;
+   Minute = window.document.Calendar.Minute_Preview.value;
+   Second = window.document.Calendar.Second_Preview.value;
+
+   // if values pass a very basic test ...
+   if (Day > 0 & Day < 32 & Month > 0 & Month < 13 & Year > 2000 & Year < 2020 & 
+       Hour > -1 & Hour < 25 & Hour != '' & Minute > -1 & Minute < 60 & Minute != '' & Second > -1 & Second < 60 & Second != '') {
+      // ... copy date string into target field in form
+      opener.document.getElementById(target_field[1]).value = Day + '.' + Month + '.' + Year + ' ' + Hour + ':' + Minute + ':' + Second;
+   }
+
+   window.close();
+}
+
+//]]></script>
+
+<style type="text/css">
+.day_button    {  width:25px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.month_button  {  width:50px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.year_button   {  width:50px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.hour_button    {  width:25px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.minute_button    {  width:25px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.second_button {  width:25px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.submit_button {  width:70px; text-align:center;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.day_display   {  text-align:right;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.month_display {  text-align:right;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.year_display  {  text-align:right;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.hour_display  {  text-align:right;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.minute_display { text-align:right;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+.second_display { text-align:right;
+                  font-family:System,sans-serif;
+                  font-size:100%;
+               }
+</style>
+
+</head>
+
+<body bgcolor="#FFFFE0" onload="set_defaults()">
+
+<form name="Calendar" action="" onsubmit="return false;">
+    <table border="5" cellpadding="10" cellspacing="0">
+       <tr>
+          <td colspan="3" bgcolor="#C0C0C0" align="center">
+              <b>Date</b> <input type="text" name="Day_Preview"  size="2" maxlength="2" align="right" class="day_display"  /><b>.</b><input type="text" name="Month_Preview"  size="2" maxlength="2" align="right" class="month_display"  /><b>.</b><input type="text" name="Year_Preview"   size="4" maxlength="4" align="right" class="year_display"   /> &nbsp;&nbsp;
+              <b>Time</b> <input type="text" name="Hour_Preview" size="2" maxlength="2" align="right" class="hour_display" /><b>:</b><input type="text" name="Minute_Preview" size="2" maxlength="2" align="right" class="minute_display" /><b>:</b><input type="text" name="Second_Preview" size="2" maxlength="2" align="right" class="second_display" />
+          </td>
+       </tr>
+       <tr>
+          <td bgcolor="#E0E0E0" align="center" valign="top">
+              <center><b>Day</b></center><br />
+              <table border="0" cellpadding="0" cellspacing="2">
+                  <tr>
+                     <td><input type="button" width="25" class="day_button" value="01" onclick="Set_Day('1')"></td>
+                     <td><input type="button" width="25" class="day_button" value="02" onclick="Set_Day('2')"></td>
+                     <td><input type="button" width="25" class="day_button" value="03" onclick="Set_Day('3')"></td>
+                     <td><input type="button" width="25" class="day_button" value="04" onclick="Set_Day('4')"></td>
+                     <td><input type="button" width="25" class="day_button" value="05" onclick="Set_Day('5')"></td>
+                     <td><input type="button" width="25" class="day_button" value="06" onclick="Set_Day('6')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="25" class="day_button" value="07" onclick="Set_Day('7')"></td>
+                     <td><input type="button" width="25" class="day_button" value="08" onclick="Set_Day('8')"></td>
+                     <td><input type="button" width="25" class="day_button" value="09" onclick="Set_Day('9')"></td>
+                     <td><input type="button" width="25" class="day_button" value="10" onclick="Set_Day('10')"></td>
+                     <td><input type="button" width="25" class="day_button" value="11" onclick="Set_Day('11')"></td>
+                     <td><input type="button" width="25" class="day_button" value="12" onclick="Set_Day('12')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="25" class="day_button" value="13" onclick="Set_Day('13')"></td>
+                     <td><input type="button" width="25" class="day_button" value="14" onclick="Set_Day('14')"></td>
+                     <td><input type="button" width="25" class="day_button" value="15" onclick="Set_Day('15')"></td>
+                     <td><input type="button" width="25" class="day_button" value="16" onclick="Set_Day('16')"></td>
+                     <td><input type="button" width="25" class="day_button" value="17" onclick="Set_Day('17')"></td>
+                     <td><input type="button" width="25" class="day_button" value="18" onclick="Set_Day('18')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="25" class="day_button" value="19" onclick="Set_Day('19')"></td>
+                     <td><input type="button" width="25" class="day_button" value="20" onclick="Set_Day('20')"></td>
+                     <td><input type="button" width="25" class="day_button" value="21" onclick="Set_Day('21')"></td>
+                     <td><input type="button" width="25" class="day_button" value="22" onclick="Set_Day('22')"></td>
+                     <td><input type="button" width="25" class="day_button" value="23" onclick="Set_Day('23')"></td>
+                     <td><input type="button" width="25" class="day_button" value="24" onclick="Set_Day('24')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="25" class="day_button" value="25" onclick="Set_Day('25')"></td>
+                     <td><input type="button" width="25" class="day_button" value="26" onclick="Set_Day('26')"></td>
+                     <td><input type="button" width="25" class="day_button" value="27" onclick="Set_Day('27')"></td>
+                     <td><input type="button" width="25" class="day_button" value="28" onclick="Set_Day('28')"></td>
+                     <td><input type="button" width="25" class="day_button" value="29" onclick="Set_Day('29')"></td>
+                     <td><input type="button" width="25" class="day_button" value="30" onclick="Set_Day('30')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="25" class="day_button" value="31" onclick="Set_Day('31')"></td>
+                  </tr>
+              </table>
+          </td>
+          <td bgcolor="#E0E0E0"align="center" valign="top">
+              <center><b>Month</b></center><br />
+              <table border="0" cellpadding="0" cellspacing="2">
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="Jan" onclick="Set_Month('1')"></td>
+                     <td><input type="button" width="60" class="month_button" value="Feb" onclick="Set_Month('2')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="Mar" onclick="Set_Month('3')"></td>
+                     <td><input type="button" width="60" class="month_button" value="Apr" onclick="Set_Month('4')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="May" onclick="Set_Month('5')"></td>
+                     <td><input type="button" width="60" class="month_button" value="Jun" onclick="Set_Month('6')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="Jul" onclick="Set_Month('7')"></td>
+                     <td><input type="button" width="60" class="month_button" value="Aug" onclick="Set_Month('8')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="Sep" onclick="Set_Month('9')"></td>
+                     <td><input type="button" width="60" class="month_button" value="Oct" onclick="Set_Month('10')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="Nov" onclick="Set_Month('11')"></td>
+                     <td><input type="button" width="60" class="month_button" value="Dec" onclick="Set_Month('12')"></td>
+                  </tr>
+              </table>
+          </td>
+          <td bgcolor="#E0E0E0" align="center" valign="top">
+              <center><b>Year</b></center><br />
+              <table border="0" cellpadding="0" cellspacing="2">
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="2001" onclick="Set_Year('2001')"></td>
+                     <td><input type="button" width="60" class="month_button" value="2002" onclick="Set_Year('2002')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="2003" onclick="Set_Year('2003')"></td>
+                     <td><input type="button" width="60" class="month_button" value="2004" onclick="Set_Year('2004')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="2005" onclick="Set_Year('2005')"></td>
+                     <td><input type="button" width="60" class="month_button" value="2006" onclick="Set_Year('2006')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="2007" onclick="Set_Year('2007')"></td>
+                     <td><input type="button" width="60" class="month_button" value="2008" onclick="Set_Year('2008')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="2009" onclick="Set_Year('2009')"></td>
+                     <td><input type="button" width="60" class="month_button" value="2010" onclick="Set_Year('2010')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="month_button" value="2011" onclick="Set_Year('2011')"></td>
+                     <td><input type="button" width="60" class="month_button" value="2012" onclick="Set_Year('2012')"></td>
+                  </tr>
+              </table>
+          </td>
+       </tr>
+       <tr>
+          <td bgcolor="#E0E0E0" align="center" valign="top">
+              <center><b>Hour</b></center><br />
+              <table border="0" cellpadding="0" cellspacing="2">
+                  <tr>
+                     <td><input type="button" width="60" class="hour_button" value="07" onclick="Set_Hour('7')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="08" onclick="Set_Hour('8')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="09" onclick="Set_Hour('9')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="10" onclick="Set_Hour('10')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="hour_button" value="11" onclick="Set_Hour('11')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="12" onclick="Set_Hour('12')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="13" onclick="Set_Hour('13')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="14" onclick="Set_Hour('14')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="hour_button" value="15" onclick="Set_Hour('15')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="16" onclick="Set_Hour('16')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="17" onclick="Set_Hour('17')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="18" onclick="Set_Hour('18')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="hour_button" value="19" onclick="Set_Hour('19')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="20" onclick="Set_Hour('20')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="21" onclick="Set_Hour('21')"></td>
+                     <td><input type="button" width="60" class="hour_button" value="22" onclick="Set_Hour('22')"></td>
+                  </tr>
+              </table>
+          </td>
+          <td bgcolor="#E0E0E0" align="center" valign="top">
+              <center><b>Minute</b></center><br />
+              <table border="0" cellpadding="0" cellspacing="2">
+                  <tr>
+                     <td><input type="button" width="60" class="minute_button" value="00" onclick="Set_Minute('0')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="05" onclick="Set_Minute('5')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="10" onclick="Set_Minute('10')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="minute_button" value="15" onclick="Set_Minute('15')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="20" onclick="Set_Minute('20')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="25" onclick="Set_Minute('25')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="minute_button" value="30" onclick="Set_Minute('30')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="35" onclick="Set_Minute('35')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="40" onclick="Set_Minute('40')"></td>
+                  </tr>
+                  <tr>
+                     <td><input type="button" width="60" class="minute_button" value="45" onclick="Set_Minute('45')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="50" onclick="Set_Minute('50')"></td>
+                     <td><input type="button" width="60" class="minute_button" value="55" onclick="Set_Minute('55')"></td>
+                  </tr>
+              </table>
+          </td>
+          <td bgcolor="#E0E0E0" align="center" valign="top">
+          </td>
+       </tr>
+    </table>
+
+    <p />
+
+    <input type="button" width="60" class="submit_button" value="Set Date" onclick="Set_Date()">
+    <input type="reset"  width="60" class="submit_button" value="Reset">
+
+    <p />
+    <input type="button" width="60" class="submit_button" value="Close"    onclick="window.close()">
+
+</form>
+
+</body>
+</html>

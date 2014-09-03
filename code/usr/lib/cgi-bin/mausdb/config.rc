@@ -1,0 +1,18 @@
+# MACHINE SPECIFIC SETTINGS
+MAUSDB_LOCK         = false
+server              = yourserver
+mode                = DEMO
+log_prefix          = dev_
+local_basedir       = /var/www/
+local_cgi_basedir   = /usr/lib/cgi-bin/mausdb
+local_htdoc_basedir = /var/www/mausdb
+URL_basedir         = http://yourserver.yourdomain
+URL_cgi_basedir     = http://yourserver.yourdomain/cgi-bin/mausdb
+URL_htdoc_basedir   = http://yourserver.yourdomain/mausdb
+cookie_name         = CGISESSID
+connect_path        = /var/maus_connect
+blob_database       = mausdb_blobs
+cryo_database       = no
+olympus_database    = no
+start_mouse_id      = 10000000
+

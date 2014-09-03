@@ -1,0 +1,202 @@
+
+body {
+	color : #000000;
+	background-color : #ffffff;
+	margin : 16px;
+
+}
+body.menu {
+	color : #000790;
+	background-color : #e0e0e0;
+	background-image : none;
+	margin : 8px;
+
+}
+h1 {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 18px;
+	font-weight : bold;
+
+}
+h2 {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 16px;
+	font-weight : bold;
+
+}
+h3 {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+
+}
+h1.menu {
+	color : #000790;
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 15px;
+	font-weight : bold;
+
+}
+h2.menu {
+	color : #000790;
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+
+}
+h3.menu {
+	color : #000790;
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 9px;
+	font-weight : bold;
+
+}
+p {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 14px;
+	font-weight : normal;
+
+}
+p.menu {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 9px;
+	font-weight : normal;
+
+}
+em {
+	font-weight : bold;
+	font-style : normal;
+
+}
+em.menu {
+	color : #000790;
+	font-weight : bold;
+	font-style : normal;
+
+}
+em.selected {
+	color : #000790;
+	background-color : #ffe000;
+	font-weight : bold;
+	font-style : normal;
+
+}
+h1 em {
+	font-style : italic;
+
+}
+h2 em {
+	font-style : italic;
+
+}
+h3 em {
+	font-style : italic;
+
+}
+pre {
+	font-family : monospace;
+	font-size : 12px;
+
+}
+pre em {
+	font-weight : normal;
+	font-style : normal;
+	background-color : #c0c0ff;
+
+}
+ul {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 12px;
+
+}
+table.shaded {
+	border-width : 0;
+	border-style : none;
+	border-color : #000000;
+	padding : 1px;
+
+}
+table.bordered {
+	border-width : 0;
+	border-style : none;
+	border-color : #ffffff;
+	padding : 1px;
+
+}
+th {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+	text-align : left;
+}
+tr.color {
+	background-color : #c0c0ff;
+
+}
+td {
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 12px;
+	font-weight : normal;
+
+}
+td.menu {
+	color : #000790;
+	font-family : Verdana, Helvetica, Arial, sans-serif;
+	font-size : 12px;
+	font-weight : normal;
+
+}
+td.spacer {
+	text-align : center;
+
+}
+td.color {
+	background-color : #c0c0ff;
+
+}
+td.selected {
+	background-color : #ffe000;
+
+}
+.grayed {
+        color : #808080;
+}
+a:link {
+	color : #0000c0;
+
+}
+a:active {
+	color : #0000f0;
+
+}
+a:visited {
+	color : #400080;
+
+}
+a.menu:link {
+	color : #000790;
+
+}
+a.menu:active {
+	color : #0008bd;
+
+}
+a.menu:visited {
+	color : #000790;
+
+}
+a.warning:link {
+	color : #ff0000;
+
+}
+a.warning:active {
+	color : #ff0000;
+
+}
+a.warning:visited {
+	color : #ff0000;
+
+}
+.warning {
+	color : #ff0000;
+}
