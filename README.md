@@ -5,7 +5,7 @@ MausDB is an open-source web-based MySQL database for large animal colony manage
 
 A copy of the Installation Manual, and of the publication describing MausDB is available in the info/ directory.
 
-For more Information please visit  http://vm-jupiter.helmholtz-muenchen.de/
+For more Information please visit  http://www.helmholtz-muenchen.de/en/ieg/services/software-downloadsresources/mausdb/about-mausdb/index.html
 
 MausDB is distributed under the GNU General Public Lincence.  Visit http://www.gnu.org/licenses/gpl.html for more details.
 
