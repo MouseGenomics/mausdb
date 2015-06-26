@@ -17,4 +17,4 @@ Ingolstädter Landstraße 1
 D-85764 Neuherberg
 
 
-Disclosure : I, Rodrigo Gularte Mérida, have no affiliation to the German Mouse Clinic.  I'm a new USER of the software, and would like to extend the database to include sample collection and management for my project, along with colony management. 
+Disclosure : I, Rodrigo Gularte Mérida, have no affiliation to the German Mouse Clinic.  I'm a 'user' of the software, and would like to extend the database to include sample collection and sample management for my project to mausdb. 
